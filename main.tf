@@ -38,7 +38,7 @@ resource "aws_security_group" "docdb_sg" {
 }
 
 resource "aws_docdb_cluster" "docdb_cluster" {
-  cluster_identifier      = "${var.env}-docdb-cluster"
+  cluster_identifier      = "${var.env}_docdb_cluster"
   engine                  = "docdb"
   engine_version          = var.engine_version
   master_username         = data.aws_ssm_parameter.docdb_user.value
@@ -58,7 +58,7 @@ resource "aws_docdb_cluster" "docdb_cluster" {
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
   count              = var.no_of_instance_docdb
-  identifier         = "${var.env}-docdb_cluster-instance-${count.index+1}"
+  identifier         = "${var.env}_docdb_cluster_instance-${count.index+1}"
   cluster_identifier = aws_docdb_cluster.docdb_cluster.id
   instance_class     = var.instance_class
 #  storage_encrypted       = true
