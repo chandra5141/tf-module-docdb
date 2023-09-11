@@ -38,7 +38,7 @@ resource "aws_security_group" "docdb_sg" {
 }
 
 resource "aws_docdb_cluster" "docdb_cluster" {
-  cluster_identifier      = "${var.env}_docdb_cluster"
+  cluster_identifier      = "${var.env}-docdb-cluster"
   engine                  = "docdb"
   engine_version          = var.engine_version
   master_username         = data.aws_ssm_parameter.docdb_user.value
