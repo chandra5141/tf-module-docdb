@@ -1,5 +1,5 @@
 resource "aws_docdb_subnet_group" "docdb_subnet_group" {
-  name       = "${var.env}-docdb_subnet_group"
+  name       = "${var.env}_docdb_subnet_group"
   subnet_ids = var.subnet_ids
 
   tags = merge(
@@ -9,8 +9,8 @@ resource "aws_docdb_subnet_group" "docdb_subnet_group" {
 }
 
 resource "aws_security_group" "docdb_sg" {
-  name        = "${var.env}-docdb_security_group"
-  description = "${var.env}-docdb_security_group"
+  name        = "${var.env}_docdb_security_group"
+  description = "${var.env}_docdb_security_group"
   vpc_id      = var.vpc_id
 
 
